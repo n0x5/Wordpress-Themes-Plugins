@@ -1,0 +1,176 @@
+/*
+Theme Name: Code 2 Simple
+Theme URI: http://
+Description: Two-columns, black background with green text theme from <a href="http://">coax*</a>
+Version: 0.0.7
+Author: nox
+Text Domain: English
+Author URI: http://mc
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+body {
+	background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.7em;
+    background-size: 100%;
+    min-height: 100%;
+}
+
+#wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+
+div#sidebar {
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    width: 200px;
+    float: right;
+}
+
+.content {
+    width: 720px;
+    margin: 0 auto;
+    position: relative;
+    float: left;
+}
+
+#footer {
+	width: 20%;
+    text-align: center;
+    padding: 10px 0;
+    display: block;
+    clear: both;
+}
+h2 {
+		font-family: "Courier New", monospace;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: -1px;
+	display: block;
+    margin-bottom: 3%;
+}
+#nav {
+	width: 20%;
+}
+.gallery { 
+margin: 0 auto 18px; 
+}
+
+.gallery .gallery-item {
+float: left;
+margin-top: 0;
+text-align: center;
+width: 43%;
+}
+.gallery-columns-2 .gallery-item { width: 50%; }
+.gallery-columns-4 .gallery-item { width: 25%; }
+
+.gallery img:hover {
+        box-shadow: 0px 0px 10px #cbcbcb;
+	background: black;
+}
+
+.imgc a:hover {
+        background-color: black;
+}
+
+.gallery {
+    margin: 0 auto 18px;
+    display: inline-block;
+}
+
+div.dimensions {
+    
+    text-align: center;
+    font-size: 11px;
+    margin-top: 1px;
+}
+
+div.uploaded {
+	text-align: center;
+}
+
+
+.gallery {
+display: inline-block;
+}
+
+.gallery img {
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.imgc {
+    box-shadow: 0px 0px 3px #cbcbcb;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.imgc {
+margin-right: 30px;
+font-family: Verdana, sans;
+font-size: 11px;
+box-shadow: 0px 0px 3px #cbcbcb;
+float: left;
+margin-bottom: 15px;
+}
+
+
+.filename {
+text-align: center;
+font-size: 11px;
+word-wrap: break-word;
+letter-spacing: 1px;
+}
+
+.wp-caption {
+}
+.wp-caption-text {
+display: none;
+}
+
+div[id^="gallery-"] .gallery-caption {
+    display: none;
+}
+
+.entry {
+	border-bottom: 2px dashed gray;
+}
+
+a {
+	text-decoration: none;
+    font-size: 22px;
+  
+    color: #ffffff;
+    letter-spacing: 4px;
+}
+a:hover {
+	color: #b9b9b9;
+}
+.title1{
+	font-size: 12px;
+    background-color: #191919;
+    color: #9a9a9a;
+    letter-spacing: 4px;
+}
+
+#sidebar a {
+    font-size: 30px;
+    color: #c3c3c3;
+    letter-spacing: 0;
+    margin-bottom: 10%;
+}
+li {
+	    margin-bottom: 30%;
+}

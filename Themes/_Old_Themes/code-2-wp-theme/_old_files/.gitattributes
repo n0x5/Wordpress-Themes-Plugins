@@ -1,0 +1,29 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
+
+/js/* linguist-vendored=true
+
+*.css_ linguist-language=CSS
+*.php_ linguist-language=PHP
+*.html_ linguist-language=HTML
+*.js_ linguist-language=JavaScript
+*.json_ linguist-language=JSON
+*.scss_ linguist-language=CSS
+*.svg_ linguist-language=SVG
+*.yaml_ linguist-language=YAML
+*.yml_ linguist-language=YAML

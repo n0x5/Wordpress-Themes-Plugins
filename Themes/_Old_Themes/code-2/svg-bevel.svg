@@ -1,0 +1,13 @@
+<!-- BEVEL -->
+<feConvolveMatrix in="SourceAlpha" order="4,4" kernelMatrix="1 0 0 0,
+0 1 0 0,
+0 0 1 0,
+0 0 0 1" divisor="4" result="BEVEL"></feConvolveMatrix>
+<!-- OFFSET -->
+<feOffset in="BEVEL" dx="2" dy="2" result="OFFSET"></feOffset>
+<!-- 32f3474f-f3a3-4ef9-b5f1-e6bcaca5de73 -->
+<feMerge result="32f3474f-f3a3-4ef9-b5f1-e6bcaca5de73">
+    <feMergeNode in="OFFSET"></feMergeNode>
+    <feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+
