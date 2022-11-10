@@ -23,9 +23,7 @@ if ( $the_query->have_posts() ):
 
 while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-	<h2 style="line-height: 80%;"><h3 style="display:inline;"><?php the_date(); ?></h3><a style="line-height: 80%;" href="<?php echo get_permalink(); ?>"> - <?php echo get_the_title(); ?></a></h2>
-
-<?php // echo '<a href="'.get_permalink().'" title="'.get_the_title().'">'.get_the_post_thumbnail($post_id, 'thumbnail', array( 'class' => 'none' )).'</a>'.'<a href="'.get_permalink().'">'.get_the_title().'</a></div>'; ?><?php // the_date(); ?>
+	<h2 style="line-height: 80%;"><h3 style="display:inline;"><?php echo get_the_date(); ?></h3><a style="line-height: 80%;" href="<?php echo get_permalink(); ?>"> - <?php echo get_the_title(); ?></a></h2>
 
 <?php endwhile; ?>
 <?php wp_reset_postdata(); ?>
