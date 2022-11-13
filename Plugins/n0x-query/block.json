@@ -1,0 +1,10 @@
+{
+    "apiVersion": 2,
+    "title": "n0x Query",
+    "name": "n0x/query",
+    "category": "layout",
+    "icon": "media-code",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}
