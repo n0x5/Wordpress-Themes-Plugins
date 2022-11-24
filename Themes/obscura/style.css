@@ -1,0 +1,48 @@
+/*
+Theme Name: Obscura
+Theme URI: 
+Author: 
+Author URI: 
+Description: new blank
+Requires at least: 5.8
+Tested up to: 5.9
+Requires PHP: 5.7
+Version: 16.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Template: 
+Text Domain: newblank
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, rtl-language-support, theme-options, threaded-comments, translation-ready, wide-blocks
+*/
+
+a {
+	text-decoration: none !important;
+	line-height: 100%;
+}
+p {
+	    line-height: 100% !important;
+}
+.wp-block-table table {
+    border-collapse: collapse;
+    width: 100%;
+    line-height: 130%;
+}
+.n0x-title {
+	line-height: 100%;
+}
+.post1 {
+	line-height: 100%;
+}
+.galstuff {
+	line-height: 100%;
+}
+.stuf {
+	line-height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: black;
+    font-family: Cutive Mono;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}

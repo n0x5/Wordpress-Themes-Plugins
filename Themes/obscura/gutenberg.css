@@ -1,0 +1,27 @@
+p {
+        line-height: 100% !important;
+}
+.wp-block-table table {
+    border-collapse: collapse;
+    width: 100%;
+    line-height: 130%;
+}
+.n0x-title {
+    line-height: 100%;
+}
+.post1 {
+    line-height: 100%;
+}
+.galstuff {
+    line-height: 100%;
+}
+.stuf {
+    line-height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: black;
+    font-family: Cutive Mono;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
