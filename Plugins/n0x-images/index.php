@@ -5,7 +5,7 @@
 
 function n0x_images_register_block( $block_attributes, $content ) {
 global $wpdb;
-$sql = "select * from  $wpdb->posts where post_type = 'attachment' order by id desc limit 25";
+$sql = "select * from  $wpdb->posts where post_type = 'attachment' and post_parent != 0 order by id desc limit 10";
 $recent_posts = $wpdb->get_results($sql);
 
 foreach ($recent_posts as $post) {
@@ -16,7 +16,8 @@ foreach ($recent_posts as $post) {
         // private galleries
         }
     else {
-        $final_post = $final_post . '<div class="post1"><a href="' . get_permalink($p_parent) . '">' . wp_get_attachment_image($p_id) . '</a> added in ' . get_the_title($p_parent) . '</div><br>';
+        $final_post = $final_post . '<div class="post1"><a href="' . wp_get_attachment_image_url($p_id, 'full') . '">' . wp_get_attachment_image($p_id) . 
+                        '</a> added in <a href="' . get_permalink($p_parent) . '">' . get_the_title($p_parent) . '</a></div><br>';
         }
     }
 
