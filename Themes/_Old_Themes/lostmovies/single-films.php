@@ -2,7 +2,7 @@
 require('./wp-blog-header.php');
 include(get_template_directory() . '/header.php');
 ?>
-
+<?php echo '<h2 class="the-date">'.get_the_date().'</h2>'; ?>
 <div class="movie">
 <?php $meta = get_post_meta( get_the_ID() ); ?>
 <h2><?php the_title(); ?> (<?php echo $meta['year'][0]; ?>) <h2>

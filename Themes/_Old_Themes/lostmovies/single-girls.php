@@ -2,6 +2,7 @@
 require('./wp-blog-header.php');
 include(get_template_directory() . '/header.php');
 ?>
+<?php echo '<h2 class="the-date">'.get_the_date().'</h2>'; ?>
 
 
 <div class="girls">
@@ -44,7 +45,7 @@ global $wpdb;
 $sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'year' AND post_id = '$pid'";
     $results = $wpdb->get_col($sql);
 ?>
-<div class="actress"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?><br><div class="name"><?php the_title(); ?> (<?php echo $results[0]; ?>)</a></div></div>
+<div class="film"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?><br><div class="name"><?php the_title(); ?> (<?php echo $results[0]; ?>)</a></div></div>
 <?php endwhile; ?>
 
 <?php else : ?>

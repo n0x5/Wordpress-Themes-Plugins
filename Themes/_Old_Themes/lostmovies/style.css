@@ -421,12 +421,20 @@ div[id^="gallery-"] .gallery-caption {
 .wp-block-image {
 	width: 300px;
 }
+.film {
+	width: 145px;
+    float: left;
+	margin-left: 15px;
+	margin-right: 5px;
+	background-color: #343434;
+	padding: 10px;
+}
 .actress {
 	width: 145px;
     float: left;
 	margin-left: 15px;
 	margin-right: 5px;
-	background-color: #56003e;
+	background-color: #6a0000;
 	padding: 10px;
 }
 #sidebar {
@@ -446,7 +454,7 @@ div[id^="gallery-"] .gallery-caption {
 }
 
 .girls {
-	background-color: #56003e;
+	background-color: #6a0000;
     width: 500px;
     padding: 8px;
 }
