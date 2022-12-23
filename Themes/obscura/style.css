@@ -46,3 +46,8 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.5;
     text-transform: uppercase;
 }
+body .is-layout-flow > * {
+    margin-block-start: 0;
+    line-height: 120% !important;
+    margin-block-end: 0;
+}
