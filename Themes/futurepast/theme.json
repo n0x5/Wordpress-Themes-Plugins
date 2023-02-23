@@ -1,0 +1,164 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.1/theme.json",
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "620px",
+			"wideSize": "1000px"
+		},
+		"spacing": {
+			"units": [
+				"%",
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+					"name": "System Font",
+					"slug": "system-font"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Rubik",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/rubik_normal_400.ttf"
+							]
+						},
+						{
+							"fontFamily": "Rubik",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/rubik_normal_500.ttf"
+							]
+						}
+					],
+					"fontFamily": "Rubik",
+					"slug": "rubik"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "DM Mono",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/dm-mono_normal_400.ttf"
+							]
+						},
+						{
+							"fontFamily": "DM Mono",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/dm-mono_normal_500.ttf"
+							]
+						}
+					],
+					"fontFamily": "DM Mono",
+					"slug": "dm-mono"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Special Elite",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/special-elite_normal_400.ttf"
+							]
+						}
+					],
+					"fontFamily": "Special Elite",
+					"slug": "special-elite"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Play",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/play_normal_400.ttf"
+							]
+						},
+						{
+							"fontFamily": "Play",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/play_normal_700.ttf"
+							]
+						}
+					],
+					"fontFamily": "Play",
+					"slug": "play"
+				}
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|black",
+			"text": "#e6e6e6"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "#abb8c3"
+				},
+				"typography": {
+					"fontFamily": "var:preset|font-family|special-elite",
+					"lineHeight": "1",
+					"textDecoration": "none",
+					"textTransform": "none"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#7bcc70"
+				},
+				"typography": {
+					"fontStyle": "normal",
+					"fontWeight": "400",
+					"textDecoration": "none"
+				}
+			}
+		},
+		"spacing": {
+			"padding": {
+				"bottom": "0px",
+				"left": "0px",
+				"right": "0px",
+				"top": "0px"
+			}
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|rubik",
+			"fontSize": "16px",
+			"fontStyle": "normal",
+			"fontWeight": "400",
+			"lineHeight": "1"
+		}
+	},
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header"
+		},
+		{
+			"area": "footer",
+			"name": "footer"
+		}
+	],
+	"version": 2
+}
