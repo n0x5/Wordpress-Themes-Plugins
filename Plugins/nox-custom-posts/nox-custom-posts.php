@@ -409,16 +409,26 @@ add_filter('the_content', 'breadcrumb_links');
 #### Put [noxindex] shortcode in any page and it will grab all child pages with
 #### featured images and their title and create a grid gallery right in the page
 #### can be easily used to create galleries with sub galleries
+### ADDED: Support for caption. Add a custom field called 'caption' in the individual sub pages and put in a short description
+### and it will show in parentheses under the gallery thumbnail.
 
 function n0x5_gallery() {
-    $pages = get_pages(array('parent'  => get_the_id(), 'post_status' => array('publish', 'private')));
+    $pages = get_pages(array('parent'  => get_the_id(), 'post_status' => array('publish', 'private'), 'sort_column'  => 'id', 'sort_order'   => 'asc' ));
     $result = wp_list_pluck( $pages, 'ID' );
+    
     foreach ($result as $thumb) {
         $wp_query2 = new WP_Query(array(
             'post_parent' => $thumb,
             'post_type' => array('attachment', 'page'),
             'post_status' => 'any'
             ));
+        $meta = get_post_meta( $thumb );
+        $caption = $meta['caption'][0];
+        if (!empty($caption )) {
+            $caption = '<br>(' . $caption . ')';
+        } else {
+            $caption = '';
+        }
         $count = $wp_query2->found_posts;
         $perma = get_permalink($thumb);
         $title = get_the_title($thumb);
@@ -426,12 +436,9 @@ function n0x5_gallery() {
         $sizes = wp_get_registered_image_subsizes();
         $img_width = $sizes['thumbnail']['width'];
         if (!empty(get_the_post_thumbnail($thumb, 'thumbnail') )) {
-          $thumb = '<div class="nox-item"><div class="n0x-lnk"><a href="'.$perma.'">'.$thumbnail.'</a></div><div class="n0x-title"><a href="'.$perma.'">'.$title . ' <br>(' . $count .  ' items)</a></div></div>';
-
+            $thumb = '<div class="nox-item"><div class="n0x-lnk"><a href="'.$perma.'">'.$thumbnail.'</a></div><div class="n0x-title"><a href="'.$perma.'">'.$title . ' <br>(' . $count .  ' items)' . $caption . '</a></div></div>';
             $lnks = $lnks . $thumb;
-			
-        }
-        else {
+        } else {
             $thumb = '<a href="'.$perma.'">'.$title.'</a><br>';
             $lnks = $lnks . $thumb;
         }
@@ -439,7 +446,6 @@ function n0x5_gallery() {
     return '<div class="stuf">' . $lnks . '</div>';
 }
 add_shortcode('noxindex', 'n0x5_gallery');
-
 
 #### insert imdb info with shortcode (need movies-flm.db)
 #### format: [noximdb imdb='tt1234567']
