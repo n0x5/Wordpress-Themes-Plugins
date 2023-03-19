@@ -23,7 +23,7 @@ $page_url2 = '<a href=' . $page_link2 .'>' . $title2 . '</a>';
 $page_url3 = '<a href=' . $url .'>' . 'Home' . '</a>';
 $beforecontent = '<h4>' . $page_url3 .'<div class="sep3"> -> </div>'. $item_output1 . $title2 . '</h4>';
 $aftercontent = '';
-$fullcontent = $beforecontent .'<br>' . '<br>' . $content . $aftercontent;
+$fullcontent = $beforecontent .'' . '' . $content . $aftercontent;
 
 
 return $fullcontent;
