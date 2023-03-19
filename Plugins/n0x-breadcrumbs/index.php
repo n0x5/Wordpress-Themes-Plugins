@@ -4,25 +4,7 @@
  */
 
 function n0x_breadcumbs_register_block( $block_attributes, $content ) {
-$metadata = wp_get_attachment_metadata();
-$width = $metadata['width'];
-$height = $metadata['height'];
-$caption = $metadata['image_meta']['caption'];
-$camera = $metadata['image_meta']['camera'];
-$copyright = $metadata['image_meta']['copyright'];
-$aperture = $metadata['image_meta']['aperture'];
-$timestamp = $metadata['image_meta']['created_timestamp'];
-$credit = $metadata['image_meta']['credit'];
-$title3 = $metadata['image_meta']['title'];
-$focal_length = $metadata['image_meta']['focal_length'];
-$iso = $metadata['image_meta']['iso'];
-$shutter_speed = $metadata['image_meta']['shutter_speed'];
-$orientation = $metadata['image_meta']['orientation'];
-$keywords1 = $metadata['image_meta']['keywords'][0];
-$keywords2 = $metadata['image_meta']['keywords'];
-$mimetype = $metadata['sizes']['large']['mime-type'];
-$uploaded = esc_attr(get_the_time());
-$date3 = get_the_date();
+
 $parents = get_post_ancestors( $post->ID );
 $title2 = get_the_title($post->ID);
 $page_link2 = get_page_link($post->ID);
