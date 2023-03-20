@@ -24,7 +24,8 @@ $keywords2 = $metadata['image_meta']['keywords'];
 $mimetype = $metadata['sizes']['large']['mime-type'];
 $uploaded = esc_attr(get_the_time());
 $date3 = get_the_date();
-
+$url3 = esc_url(wp_get_attachment_url());
+	
 return '<div class="wp-block group"><a style="font-size: 25px;" href="'. $url3 .'">Full Size ('.$width.'x'.$height.')</a>' . wp_get_attachment_image( $post->ID, array( $attachment_size, 600 ) ) . '<br><h3>Metadata:</h3>'.
 'Dimensions: '.$width.'x'.$height.'<br>
 Mimetype: '.$mimetype.'<br>
