@@ -24,28 +24,8 @@ $keywords2 = $metadata['image_meta']['keywords'];
 $mimetype = $metadata['sizes']['large']['mime-type'];
 $uploaded = esc_attr(get_the_time());
 $date3 = get_the_date();
-$parents = get_post_ancestors( $post->ID );
-$title2 = get_the_title($post->ID);
-$page_link2 = get_page_link($post->ID);
-$url = get_bloginfo('url');
-$title3 = get_the_title($url);
-$url3 = esc_url(wp_get_attachment_url());
 
-foreach ($parents as $value) {
-    $title = get_the_title($value);
-    $page_link = get_page_link($value);
-    $page_url = '<a href=' . $page_link .'>' . $title . '</a>';
-    $item_output1 = $page_url .'<div class="sep3"> -> </div>'. $item_output1;
-}
-
-$page_url2 = '<a href=' . $page_link2 .'>' . $title2 . '</a>';
-$page_url3 = '<a href=' . $url .'>' . 'Home' . '</a>';
-$beforecontent = '<h2>' . $page_url3 .'<div class="sep3"> -> </div>'. $item_output1 . $title2 . '</h2>';
-$aftercontent = '';
-$fullcontent = $beforecontent .'<br>' . '<br>' . $content . $aftercontent;
-
-
-return $fullcontent . '<div class="wp-block group"><a style="font-size: 25px;" href="'. $url3 .'">Full Size ('.$width.'x'.$height.')</a>' . wp_get_attachment_image( $post->ID, array( $attachment_size, 600 ) ) . '<br><h3>Metadata:</h3>'.
+return '<div class="wp-block group"><a style="font-size: 25px;" href="'. $url3 .'">Full Size ('.$width.'x'.$height.')</a>' . wp_get_attachment_image( $post->ID, array( $attachment_size, 600 ) ) . '<br><h3>Metadata:</h3>'.
 'Dimensions: '.$width.'x'.$height.'<br>
 Mimetype: '.$mimetype.'<br>
 Uploaded: '.$date3 .' '. $uploaded.'<br><br>
