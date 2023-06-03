@@ -528,11 +528,11 @@ function n0x_image($atts, $content = null, $tag = '') {
     $mimetype = $metadata['sizes']['large']['mime-type'];
     $uploaded = esc_attr(get_the_time());
     $date3 = get_the_date();
-    $url3 = wp_get_attachment_image_src($img_id, 'full');
+    $url3 = wp_get_attachment_image_src($a["i"], 'full');
 
-    return '<style>table, th, td {border: 1px solid black; border-collapse: collapse;}.meta3 {font-size: 10px;padding-top: 25px;padding-left: 25px;padding-right: 5px;max-width: 247px;}.img3 {padding: 5px;} .cap1 {font-size: 15px;}</style><div class="wp-block group"><table><tr><td class="img3"><a href="'. $url3[0] .'">' . wp_get_attachment_image($a["i"], array( $attachment_size, 200 )) . '</a></div></td>'.
+    return '<style>table, th, td {border: 1px solid black; border-collapse: collapse;}.meta3 {font-size: 10px;max-width: 260px;min-width:260px;}.img3 {max-width: 390px;min-width:390px;} .cap1 {font-size: 15px;}</style><div class="wp-block group"><table><tr><td class="img3"><a href="'. $url3[0] .'"><center>' . wp_get_attachment_image($a["i"], array( $attachment_size, 200 )) . '</center></a></div></td>'.
     '<div class="meta3"><td class="meta3">' .
-	'<div class="cap1">' . $a['c'] . '</div><center><h3>---</h3>' .
+	'<center><div class="cap1">' . $a['c'] . '</div><h3>---</h3>' .
     'Dimensions: '.$width.'x'.$height.'<br>
     Mimetype: '.$mimetype.'<br>
     Uploaded: '.$date3 .' '. $uploaded.'<br><br>
