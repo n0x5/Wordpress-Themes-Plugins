@@ -501,3 +501,55 @@ function code2center_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'code2center_widgets_init' );
+
+function n0x_image($atts, $content = null, $tag = '') {
+	# Shortcode to add a single image with metadata + custom caption
+	# example: [noxi i="197" c="Building the case was relatively simple, though the PSU space was cramped"]
+	# attachment id = 197, c = the caption
+	# screenshot: https://i.imgur.com/iqd3M5K.png
+	
+	$a = shortcode_atts( array('i' => 'image', 'c' => 'the caption', ), $atts );
+    $metadata = wp_get_attachment_metadata($a['i']);
+    $width = $metadata['width'];
+    $height = $metadata['height'];
+    $caption = $metadata['image_meta']['caption'];
+    $camera = $metadata['image_meta']['camera'];
+    $copyright = $metadata['image_meta']['copyright'];
+    $aperture = $metadata['image_meta']['aperture'];
+    $timestamp = $metadata['image_meta']['created_timestamp'];
+    $credit = $metadata['image_meta']['credit'];
+    $title3 = $metadata['image_meta']['title'];
+    $focal_length = $metadata['image_meta']['focal_length'];
+    $iso = $metadata['image_meta']['iso'];
+    $shutter_speed = $metadata['image_meta']['shutter_speed'];
+    $orientation = $metadata['image_meta']['orientation'];
+    $keywords1 = $metadata['image_meta']['keywords'][0];
+    $keywords2 = $metadata['image_meta']['keywords'];
+    $mimetype = $metadata['sizes']['large']['mime-type'];
+    $uploaded = esc_attr(get_the_time());
+    $date3 = get_the_date();
+    $url3 = wp_get_attachment_image_src($img_id, 'full');
+
+    return '<style>table, th, td {border: 1px solid black; border-collapse: collapse;}.meta3 {font-size: 10px;padding-top: 25px;padding-left: 25px;padding-right: 5px;max-width: 247px;}.img3 {padding: 5px;} .cap1 {font-size: 15px;}</style><div class="wp-block group"><table><tr><td class="img3"><a href="'. $url3[0] .'">' . wp_get_attachment_image($a["i"], array( $attachment_size, 200 )) . '</a></div></td>'.
+    '<div class="meta3"><td class="meta3">' .
+	'<div class="cap1">' . $a['c'] . '</div><center><h3>---</h3>' .
+    'Dimensions: '.$width.'x'.$height.'<br>
+    Mimetype: '.$mimetype.'<br>
+    Uploaded: '.$date3 .' '. $uploaded.'<br><br>
+    Camera: ' .$camera.'<br>
+    Copyright: ' .$copyright.'<br>
+	Caption: '.$caption.'<br>
+    Title: ' .$title3.'<br>
+    Credit: ' .$credit.'<br><br>
+    Date taken: ' .date('Y-m-d H:i:s', $timestamp).'<br>
+    Aperture: ' .$aperture.'<br>
+    Focal length: ' .$focal_length.'<br>
+    Iso: ' .$iso.'<br>
+    Shutter speed: ' .$shutter_speed.'<br>
+    Orientation: ' .$orientation.'<br>
+    Iso: ' .$iso.'<br>
+    '
+    .'</div></center></td></div></tr></table>';
+}
+add_shortcode('noxi', 'n0x_image');
+
