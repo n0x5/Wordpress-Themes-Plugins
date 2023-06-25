@@ -1,5 +1,5 @@
 {
-	"$schema": "https://schemas.wp.org/wp/6.1/theme.json",
+	"$schema": "https://schemas.wp.org/wp/6.2/theme.json",
 	"settings": {
 		"appearanceTools": true,
 		"layout": {
@@ -112,7 +112,7 @@
 			},
 			"link": {
 				"color": {
-					"text": "var:preset|color|vivid-red"
+					"text": "var(--wp--preset--color--vivid-red)"
 				},
 				"typography": {
 					"textDecoration": "none"
@@ -120,7 +120,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var:preset|font-family|ibarra-real-nova"
+			"fontFamily": "var(--wp--preset--font-family--ibarra-real-nova)"
 		}
 	},
 	"templateParts": [
