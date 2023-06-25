@@ -1,0 +1,17 @@
+{
+    "apiVersion": 2,
+    "title": "n0x Breadcrumbsblog",
+    "name": "n0x/breadcrumbsblog",
+    "category": "layout",
+    "icon": "media-code",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+	"supports": {
+        "color": {
+            "text": true,
+            "background": true,
+            "link": true
+        }
+    }
+}
