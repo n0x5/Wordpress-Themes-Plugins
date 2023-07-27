@@ -6,8 +6,14 @@
 function n0x_tabs_register_block( $block_attributes, $content ) {
 wp_register_style( 'custom-script-tabs',  plugin_dir_url( __FILE__ ) . 'n0x-tabs.css' );
 wp_enqueue_style( 'custom-script-tabs'   );
+$args = array(
+'post_type' => 'page',
+'posts_per_page' => 500,
+'orderby' => 'title',
+);
+
 $my_wp_query = new WP_Query();
-$all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
+$all_wp_pages = $my_wp_query->query($args);
 $parent_id = wp_get_post_parent_id($post->ID);
 $parents = get_page_children($parent_id, $all_wp_pages);
 //var_dump($parents);
