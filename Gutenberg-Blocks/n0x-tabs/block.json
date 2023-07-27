@@ -1,0 +1,17 @@
+{
+    "apiVersion": 2,
+    "title": "n0x Tabs",
+    "name": "n0x/tabs",
+    "category": "layout",
+    "icon": "media-code",
+    "editorScript": "file:./block.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./n0x-style.css",
+	"supports": {
+        "color": {
+            "text": true,
+            "background": true,
+            "link": true
+        }
+    }
+}
