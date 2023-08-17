@@ -8,15 +8,26 @@ function n0x_gpt_register_block( $block_attributes, $content ) {
 
 $dir = 'sqlite:/home/coax/websites/secondsight/wp-content/gpt.db';
 $dbh  = new PDO($dir, null, null, [PDO::SQLITE_ATTR_OPEN_FLAGS => PDO::SQLITE_OPEN_READONLY]) or die("cannot open the database");
-$query = "select main_question, question, answer, followup from prompt_suggestions order by main_question asc";
+$query = "select distinct(main_question) from prompt_suggestions order by main_question asc";
+
+$cart = array();
 foreach ($dbh->query($query) as $row) {
-    $stuff = $stuff . '<!-- wp:details {"summary":'.$row[0].'"} -->
-<details class="wp-block-details"><summary>'.$row[1].' ('.$row[0].')</summary><!-- wp:paragraph {"placeholder":"Type / to add a hidden block"} -->
-<p>'.$row[2].'</p><p>'.$row[3].'</p>
-<!-- /wp:paragraph --></details>
-<!-- /wp:details -->';
+
+    array_push($cart, $row[0]);
     }
-    
+
+
+foreach ($cart as $quest) {
+    $query2 = "select question, answer, followup from prompt_suggestions where main_question like '".$quest."' order by question asc";
+    $stuff = $stuff . '<!-- wp:details {"summary":'.$quest.'"} -->
+        <details class="wp-block-details"><summary>'.$quest.'</summary><!-- wp:paragraph {"placeholder":"Type / to add a hidden block"} -->';
+    foreach ($dbh->query($query2) as $row2) {
+            $stuff = $stuff . '<p class="question2">' . $row2[0]   .'</p>' . '<p class="answer2">' . $row2[1]   .'</p>' . '<p class="followup2">' . $row2[2]   .'</p>';
+        }
+        $stuff = $stuff . '<!-- /wp:paragraph --></details><!-- /wp:details -->';
+}
+
+
 return $stuff;
 }
 
