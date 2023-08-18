@@ -8,7 +8,7 @@ function n0x_gpt_register_block( $block_attributes, $content ) {
 
 $dir = 'sqlite:/home/coax/websites/secondsight/wp-content/gpt.db';
 $dbh  = new PDO($dir, null, null, [PDO::SQLITE_ATTR_OPEN_FLAGS => PDO::SQLITE_OPEN_READONLY]) or die("cannot open the database");
-$query = "select distinct(lower(main_question)) from prompt_suggestions order by main_question collate NOCASE";
+$query = "select distinct(replace(lower(main_question), ':', '')) from prompt_suggestions order by main_question collate NOCASE";
 
 $cart = array();
 foreach ($dbh->query($query) as $row) {
@@ -22,7 +22,7 @@ foreach ($cart as $quest) {
     $stuff = $stuff . '<!-- wp:details {"summary":'.$quest.'"} -->
         <details class="wp-block-details"><summary>'.ucfirst($quest).'</summary><!-- wp:paragraph {"placeholder":"Type / to add a hidden block"} -->';
     foreach ($dbh->query($query2) as $row2) {
-            $stuff = $stuff . '<div class="questionmain"><p class="question2">' . $row2[0]   .'</p>' . '<p class="answer2">' . $row2[1]   .'</p>' . '<p class="followup2">' . $row2[2]   .'</p><p class="followup2">' . $row2[3]   .'</p><p class="followup3">' . $row2[4]   .'</p></div>';
+            $stuff = $stuff . '<div class="questionmain"><p class="question2">' . htmlspecialchars($row2[0])   .'</p>' . '<p class="answer2">' . htmlspecialchars($row2[1])   .'</p>' . '<p class="followup2">' . htmlspecialchars($row2[2])   .'</p><p class="followup2">' . htmlspecialchars($row2[3])   .'</p><p class="followup3">' . htmlspecialchars($row2[4])   .'</p></div>';
         }
         $stuff = $stuff . '<!-- /wp:paragraph --></details><!-- /wp:details -->';
 }
