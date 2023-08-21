@@ -1,0 +1,23 @@
+.sep4 {
+    display: inline;
+    border-top: 1px solid #adadad;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.link5 {
+    display: inline;
+    background: linear-gradient(338deg, rgb(187 187 187) 0%, rgb(229 229 229) 35%, rgb(255 255 255) 100%);
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tabs3 {
+    display: inline;
+    color: #999999;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
