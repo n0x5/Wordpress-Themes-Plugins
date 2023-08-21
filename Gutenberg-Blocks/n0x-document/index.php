@@ -7,17 +7,21 @@ function n0x_document_register_block( $block_attributes, $content ) {
 
 if (isset($_GET['doc'])) {
     $srch = $_GET['doc'];
-} else {
-    $srch = $_POST['doc'];
 }
+elseif (strpos($_SERVER['REQUEST_URI'], 'wp_admin') !== false) {
+    header('Location: ' . 'https://secondsight.dev/documents/?doc=websites');
+    die();
+}
+
 // access $srch by adding "?doc=SEARCHWORD" to end of url
 
 if (isset($_POST['doc'])) {
-$redir = add_query_arg( 'doc', $srch );
-wp_safe_redirect($redir); 
-exit();
+    $redir = add_query_arg( 'doc', $srch );
+    wp_safe_redirect($redir); 
+    exit();
 }
-    
+
+
 
 $dir = '/home/coax/websites/secondsight/wp-content/documents/' . $srch;
 $files1 = scandir($dir);
