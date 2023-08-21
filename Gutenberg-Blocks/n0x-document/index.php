@@ -7,12 +7,10 @@ function n0x_document_register_block( $block_attributes, $content ) {
 
 if (isset($_GET['doc'])) {
     $srch = $_GET['doc'];
+    } 
+else {
+    $srch = $_POST['doc'];
 }
-elseif (strpos($_SERVER['REQUEST_URI'], 'wp_admin') !== false) {
-    header('Location: ' . 'https://secondsight.dev/documents/?doc=websites');
-    die();
-}
-
 // access $srch by adding "?doc=SEARCHWORD" to end of url
 
 if (isset($_POST['doc'])) {
@@ -22,8 +20,7 @@ if (isset($_POST['doc'])) {
 }
 
 
-
-$dir = '/home/coax/websites/secondsight/wp-content/documents/' . $srch;
+$dir = '/home/coax/websites/secondsight/wp-content/documents/websites/';
 $files1 = scandir($dir);
 
 foreach ($files1 as $file) {
@@ -35,15 +32,11 @@ foreach ($files1 as $file) {
             if (str_contains($files2, '.html') and $html != '.' and $html != '..' and strpos($html, '_images') == false and strpos($html, '_files') == false) {
                 $full_folder = '<a href="' . '/wp-content/documents/websites/' . $file . '/' . $html . '">' . $html . '</a>';
                 $html2 = $html2 . '<div class="questionmain">' . $full_folder . '</div>';
+                }
             }
-        }
         $html2 = $html2 . '<!-- /wp:paragraph --></details><!-- /wp:details -->';
-        //$file2 = $file2 . '<br>' . $file . '<br>';
-    } else {
-        // pass
+        }
     }
-}
-
 return $html2;
 }
 
@@ -65,4 +58,3 @@ function n0x_document() {
 
 }
 add_action( 'init', 'n0x_document' );
-
