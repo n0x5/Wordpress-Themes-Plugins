@@ -413,36 +413,36 @@ add_filter('the_content', 'breadcrumb_links');
 ### and it will show in parentheses under the gallery thumbnail.
 
 function n0x5_gallery() {
-    $pages = get_pages(array('parent'  => get_the_id(), 'post_status' => array('publish', 'private'), 'sort_column'  => 'id', 'sort_order'   => 'asc' ));
+    $pages = get_pages(array('parent'  => get_the_id(), 'post_status' => array('publish', 'private')));
     $result = wp_list_pluck( $pages, 'ID' );
-    
     foreach ($result as $thumb) {
         $wp_query2 = new WP_Query(array(
-            'post_parent' => $thumb,
-            'post_type' => array('attachment', 'page'),
-            'post_status' => 'any'
+            'post_type' => 'attachment',
+			'post_mime_type' => 'image',
+            'post_parent' => $thumb
             ));
-        $meta = get_post_meta( $thumb );
-        $caption = $meta['caption'][0];
-        if (!empty($caption )) {
-            $caption = '<br>(' . $caption . ')';
-        } else {
-            $caption = '';
-        }
-        $count = $wp_query2->found_posts;
+		$wp_query3 = new WP_Query(array(
+            'post_parent' => $thumb,
+            'post_type' => array('page'),
+            'post_status' => 'publish'
+            ));
+	$attachments3 = get_children($thumb);
+        $count_atts = count($attachments3);
+	$count_pages = $wp_query2->found_posts;
         $perma = get_permalink($thumb);
         $title = get_the_title($thumb);
         $thumbnail = get_the_post_thumbnail($thumb, 'thumbnail');
         $sizes = wp_get_registered_image_subsizes();
         $img_width = $sizes['thumbnail']['width'];
         if (!empty(get_the_post_thumbnail($thumb, 'thumbnail') )) {
-            $thumb = '<div class="nox-item"><div class="n0x-lnk"><a href="'.$perma.'">'.$thumbnail.'</a></div><div class="n0x-title"><a href="'.$perma.'">'.$title . ' <br>(' . $count .  ' items)' . $caption . '</a></div></div>';
+            $thumb = '<div class="nox-item"><div class="n0x-lnk"><a href="'.$perma.'">'.$thumbnail.'</a></div><div class="n0x-title"><a href="'.$perma.'">'.$title . ' <br>(' . $count_pages  .  ' sub pages)<br>(' . $count_atts . ' attached images)</a></div></div>';
             $lnks = $lnks . $thumb;
         } else {
             $thumb = '<a href="'.$perma.'">'.$title.'</a><br>';
             $lnks = $lnks . $thumb;
         }
     }
+	wp_reset_postdata();
     return '<div class="stuf">' . $lnks . '</div>';
 }
 add_shortcode('noxindex', 'n0x5_gallery');
