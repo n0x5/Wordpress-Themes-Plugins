@@ -412,40 +412,44 @@ add_filter('the_content', 'breadcrumb_links');
 ### ADDED: Support for caption. Add a custom field called 'caption' in the individual sub pages and put in a short description
 ### and it will show in parentheses under the gallery thumbnail.
 
-function n0x5_gallery() {
-    $pages = get_pages(array('parent'  => get_the_id(), 'post_status' => array('publish', 'private')));
-    $result = wp_list_pluck( $pages, 'ID' );
-    foreach ($result as $thumb) {
-        $wp_query2 = new WP_Query(array(
-            'post_type' => 'attachment',
-			'post_mime_type' => 'image',
-            'post_parent' => $thumb
-            ));
-		$wp_query3 = new WP_Query(array(
-            'post_parent' => $thumb,
-            'post_type' => array('page'),
-            'post_status' => 'publish'
-            ));
-	$attachments3 = get_children($thumb);
-        $count_atts = count($attachments3);
-	$count_pages = $wp_query2->found_posts;
-        $perma = get_permalink($thumb);
-        $title = get_the_title($thumb);
-        $thumbnail = get_the_post_thumbnail($thumb, 'thumbnail');
-        $sizes = wp_get_registered_image_subsizes();
-        $img_width = $sizes['thumbnail']['width'];
-        if (!empty(get_the_post_thumbnail($thumb, 'thumbnail') )) {
-            $thumb = '<div class="nox-item"><div class="n0x-lnk"><a href="'.$perma.'">'.$thumbnail.'</a></div><div class="n0x-title"><a href="'.$perma.'">'.$title . ' <br>(' . $count_pages  .  ' sub pages)<br>(' . $count_atts . ' attached images)</a></div></div>';
-            $lnks = $lnks . $thumb;
+function noxindex_shortcode($atts) {
+    global $post;
+
+    if (!is_page() || !isset($post)) {
+        return '';
+    }
+
+    $child_pages = get_pages(array(
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'parent'         => $post->ID,
+        'sort_column'    => 'menu_order, post_title',
+        'sort_order'     => 'ASC',
+    ));
+
+    if (empty($child_pages)) {
+        return '';
+    }
+
+    $output = '<ul class="subpages-list">';
+
+    foreach ($child_pages as $child_page) {
+        $link = get_permalink($child_page->ID);
+
+        if (has_post_thumbnail($child_page->ID)) {
+            $image = get_the_post_thumbnail($child_page->ID, 'thumbnail', array('alt' => esc_attr($child_page->post_title)));
+            $output .= '<a href="' . esc_url($link) . '">' . $image . '</a><br>';
         } else {
-            $thumb = '<a href="'.$perma.'">'.$title.'</a><br>';
-            $lnks = $lnks . $thumb;
+            $output .= '<a href="' . esc_url($link) . '">' . esc_html($child_page->post_title) . '</a><br>';
         }
     }
-	wp_reset_postdata();
-    return '<div class="stuf">' . $lnks . '</div>';
+
+    $output .= '</ul>';
+
+    return $output;
 }
-add_shortcode('noxindex', 'n0x5_gallery');
+
+add_shortcode('noxindex', 'noxindex_shortcode');
 
 #### insert imdb info with shortcode (need movies-flm.db)
 #### format: [noximdb imdb='tt1234567']
