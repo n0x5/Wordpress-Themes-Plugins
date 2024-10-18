@@ -1,0 +1,26 @@
+.wp-block-subpages-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wp-block-subpages-list li {
+    margin: 10px;
+    text-align: center;
+}
+
+.wp-block-subpages-list li a img {
+    display: block;
+    max-width: 150px;
+    height: auto;
+}
+
+.wp-block-subpages-list li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.wp-block-subpages-list li a:hover {
+    opacity: 0.8;
+}
