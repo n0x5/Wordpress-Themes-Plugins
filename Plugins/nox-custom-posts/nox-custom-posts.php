@@ -371,36 +371,31 @@ add_filter( 'wp_lazy_loading_enabled', '__return_false' );
 
 add_theme_support( 'post-thumbnails' );
 
+### breadcrum shortcode
+### add [custom_breadcrumb] in a template or post
+function custom_breadcrumb_shortcode() {
+    global $post;
 
-
-function breadcrumb_links($content) {
-    $parents = get_post_ancestors( $post->ID );
-    $title2 = get_the_title($post->ID);
-    $page_link2 = get_page_link($post->ID);
-    $url = get_bloginfo('url');
-    $title3 = get_the_title($url);
-
-    foreach ($parents as $value) {
-        $title = get_the_title($value);
-        $page_link = get_page_link($value);
-        $page_url = '<a href=' . $page_link .'>' . $title . '</a>';
-        $item_output1 = $page_url .'<div class="sep3"> -> </div>'. $item_output1;
+    if ( !is_page() || is_front_page() ) {
+        return '';
     }
 
-    $page_url2 = '<a href=' . $page_link2 .'>' . $title2 . '</a>';
-    $page_url3 = '<a href=' . $url .'>' . 'Home' . '</a>';
-    $beforecontent = '<h2>' . $page_url3 .'<div class="sep3"> -> </div>'. $item_output1 . $title2 . '</h2>';
-    $aftercontent = '';
-    $fullcontent = $beforecontent .'<br>' . '<br>' . $content . $aftercontent;
+    $breadcrumb = '';
+    $breadcrumb .= '<a href="' . home_url() . '">Home</a> -> ';
+    $ancestors = get_post_ancestors( $post->ID );
+    $ancestors = array_reverse( $ancestors );
 
-    if ( is_page()  and !is_front_page() ) {
-        return $fullcontent;
-    } else {
-        return $content;
+    foreach ( $ancestors as $ancestor ) {
+        $title = get_post_field( 'post_title', $ancestor );
+        $permalink = get_permalink( $ancestor );
+        $breadcrumb .= '<a href="' . $permalink . '">' . $title . '</a> -> ';
     }
+
+    $breadcrumb .= get_the_title( $post->ID );
+
+    return $breadcrumb;
 }
-
-add_filter('the_content', 'breadcrumb_links');
+add_shortcode( 'custom_breadcrumb', 'custom_breadcrumb_shortcode' );
 
 
 
